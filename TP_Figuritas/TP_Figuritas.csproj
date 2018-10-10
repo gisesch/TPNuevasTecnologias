@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Estilos\ingresos.css" />
+    <Content Include="Estilos\principal.css" />
     <Content Include="Paginas\alta de usuario.html" />
     <Content Include="Paginas\amigo agregado.html" />
     <Content Include="Paginas\amigo no agregado.html" />
