@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -92,4 +93,23 @@ namespace Figuritas.Models
             this.nombre = nombre;
         }
     }
+
+    public class UsuarioDBContext : DbContext
+    {
+        private DbSet<Usuario> usuarios;
+        public DbSet<Usuario> Usuarios
+        {
+            get
+            {
+                return usuarios;
+            }
+            set
+            {
+                if (value == usuarios)
+                    return;
+                usuarios = value;
+            }
+        }
+    }
+
 }

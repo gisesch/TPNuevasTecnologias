@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -60,6 +61,24 @@ namespace Figuritas.Models
         public Figurita(String idAlbum)
         {
             this.idAlbum = idAlbum;
+        }
+    }
+
+    public class FiguritaDBContext : DbContext
+    {
+        private DbSet<Figurita> figuritas;
+        public DbSet<Figurita> Figuritas
+        {
+            get
+            {
+                return figuritas;
+            }
+            set
+            {
+                if (value == figuritas)
+                    return;
+                figuritas = value;
+            }
         }
     }
 }
