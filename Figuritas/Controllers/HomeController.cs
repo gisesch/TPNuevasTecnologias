@@ -13,17 +13,20 @@ namespace Figuritas.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Principal()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.Message = "Bienvenido MA...merto";
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Amigos()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+      
+        public ActionResult Configuracion()
+        {
             return View();
         }
     }
