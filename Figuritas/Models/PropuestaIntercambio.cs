@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -80,6 +81,24 @@ namespace Figuritas.Models
             this.id = id;
             this.ofertante = ofertante;
             this.receptorOferta = receptorOferta;
+        }
+    }
+
+    public class PropuestaIntercambioDBContext : DbContext
+    {
+        private DbSet<PropuestaIntercambio> propuestaIntercambios;
+        public DbSet<PropuestaIntercambio> PropuestaIntercambios
+        {
+            get
+            {
+                return propuestaIntercambios;
+            }
+            set
+            {
+                if (value == propuestaIntercambios)
+                    return;
+                propuestaIntercambios = value;
+            }
         }
     }
 }
