@@ -15,12 +15,13 @@ namespace Figuritas.Controllers
 
         public ActionResult Principal()
         {
-            ViewBag.Message = "Bienvenido MA...merto";
+            ViewBag.Message = "Album Generico";
             return View();
         }
 
         public ActionResult Amigos()
         {
+            ViewBag.Message = "Amigo Generico";
             return View();
         }
 

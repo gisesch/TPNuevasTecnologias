@@ -1,3 +1,9 @@
+
+function validarTodo() {
+
+
+}
+
 function validarEmail(email) {
     var partesEmail = email.split('@');
     if(partesEmail.length>2) {
