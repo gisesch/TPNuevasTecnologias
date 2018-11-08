@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "AltaUsuario";
+}
+
+
+<div class="configuracion">
+    <h2>Alta de usuario</h2>
+    @using (Html.BeginForm("Principal", "Home"))
+    {
+        <hr />
+        <p>Nombre usuario</p>
+        <p>
+            <input type="text" name="nombre" id="nombre" />
+        </p>
+        <hr />
+        <p>Contrasena</p>
+        <p>
+            <input type="text" name="contrasena" id="contrasena" />
+        </p>
+        <hr />
+        <p>Buscar album</p>
+        <p>
+            <input type="text" name="album" id="album" />
+        </p>
+        <hr />
+        <p>
+            Subir imagen
+        </p>
+        <p>
+            <input type="text" name="imagen" id="imagen" />
+        </p>
+        <hr />
+        <div>
+            <input type="submit" name="button" id="button" value="Aceptar" />
+        </div>
+        <hr />
+    }
+</div>
+
+

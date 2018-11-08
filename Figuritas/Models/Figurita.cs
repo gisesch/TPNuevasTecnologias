@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,8 @@ namespace Figuritas.Models
         /// <summary>
         /// Identificador del Album al que pertenece la Figurita
         /// </summary>
+        [Key]
+        [Column(Order=1)]
         public String IdAlbum
         {
             get
@@ -21,6 +25,8 @@ namespace Figuritas.Models
             }
         }
 
+        [Key]
+        [Column(Order = 2)]
         private int numero;
         /// <summary>
         /// Identificador de la Figurita dentro de un Album
@@ -61,24 +67,6 @@ namespace Figuritas.Models
         public Figurita(String idAlbum)
         {
             this.idAlbum = idAlbum;
-        }
-    }
-
-    public class FiguritaDBContext : DbContext
-    {
-        private DbSet<Figurita> figuritas;
-        public DbSet<Figurita> Figuritas
-        {
-            get
-            {
-                return figuritas;
-            }
-            set
-            {
-                if (value == figuritas)
-                    return;
-                figuritas = value;
-            }
         }
     }
 }

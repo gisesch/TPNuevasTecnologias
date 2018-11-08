@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Figurita.cs" />
+    <Compile Include="Models\GeneralDBContext.cs" />
     <Compile Include="Models\PropuestaIntercambio.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,7 +189,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\validaciones.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -206,10 +206,10 @@
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\Amigos.cshtml" />
     <Content Include="Views\Home\Configuracion.cshtml" />
+    <Content Include="Views\Home\AltaUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

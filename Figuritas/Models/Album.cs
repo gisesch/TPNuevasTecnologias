@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace Figuritas.Models
         /// <summary>
         /// Identificador del album
         /// </summary>
+        [Key]
         public String Id
         {
             get
@@ -59,24 +61,6 @@ namespace Figuritas.Models
         public Album(String id)
         {
             this.id = id;
-        }
-    }
-
-    public class AlbumDBContext : DbContext
-    {
-        private DbSet<Album> albumes;
-        public DbSet<Album> Albumes
-        {
-            get
-            {
-                return albumes;
-            }
-            set
-            {
-                if (value == albumes)
-                    return;
-                albumes = value;
-            }
         }
     }
 }
