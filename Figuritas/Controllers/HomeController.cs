@@ -24,7 +24,7 @@ namespace Figuritas.Controllers
             List<Figurita> figuritas = new List<Figurita>();
             figuritas.Add(new Figurita("1"));
             album.Figuritas = figuritas;
-          //  generalDBContext.Albumes.Add(album);
+            generalDBContext.Albumes.Add(album);
             return View(album);
         
         }
