@@ -11,62 +11,30 @@ namespace Figuritas.Models
     public class Figurita
     {
         #region Propiedades
-        private String idAlbum;
+        
         /// <summary>
         /// Identificador del Album al que pertenece la Figurita
         /// </summary>
         [Key]
         [Column(Order=1)]
-        public String IdAlbum
-        {
-            get
-            {
-                return idAlbum;
-            }
-        }
+        public String IdAlbum { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        private int numero;
         /// <summary>
         /// Identificador de la Figurita dentro de un Album
         /// </summary>
-        public int Numero
-        {
-            get
-            {
-                return numero;
-            }
-            set
-            {
-                if (value == numero)
-                    return;
-                numero = value;
-            }
-        }
+        [Key]
+        [Column(Order = 2)]
+        public int Numero { get; set; }
 
-        private int cantidad;
         /// <summary>
         /// Cantidad de veces repetidas de la Figurita
         /// </summary>
-        public int Cantidad
-        {
-            get
-            {
-                return cantidad;
-            }
-            set
-            {
-                if (value == cantidad)
-                    return;
-                cantidad = value;
-            }
-        }
+        public int Cantidad { get; set; }
         #endregion
 
         public Figurita(String idAlbum)
         {
-            this.idAlbum = idAlbum;
+            this.IdAlbum = idAlbum;
         }
     }
 }

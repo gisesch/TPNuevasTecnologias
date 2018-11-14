@@ -10,57 +10,26 @@ namespace Figuritas.Models
     public class Album
     {
         #region Propiedades
-        private String id;
         /// <summary>
         /// Identificador del album
         /// </summary>
         [Key]
-        public String Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-        private String nombre;
+        public String Id { get; set; }
+        
         /// <summary>
         /// Nombre del Album
         /// </summary>
-        public String Nombre
-        {
-            get
-            {
-                return nombre;
-            }
-            set
-            {
-                if (value == nombre)
-                    return;
-                nombre = value;
-            }
-        }
-        private ICollection<Figurita> figuritas;
+        public String Nombre { get; set; }
+        
         /// <summary>
         /// Coleccion de figuritas del Album
         /// </summary>
-        public ICollection<Figurita> Figuritas
-        {
-            get
-            {
-                return figuritas;
-            }
-            set
-            {
-                if (value == figuritas)
-                    return;
-                figuritas = value;
-            }
-        }
+        public ICollection<Figurita> Figuritas { get; set; }
         #endregion
 
         public Album(String id)
         {
-            this.id = id;
+            this.Id = id;
         }
     }
 }

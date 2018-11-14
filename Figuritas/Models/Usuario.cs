@@ -11,19 +11,11 @@ namespace Figuritas.Models
     public class Usuario
     {
         #region Propiedades
-        private String nombre;
         /// <summary>
         /// Identificador del Usuario
         /// </summary>
-        public String Nombre
-        {
-            get
-            {
-                return nombre;
-            }
-        }
-
-        private String email;
+        public String Nombre { get; set; }
+        
         /// <summary>
         /// Cuenta de email del Usuario
         /// </summary>
@@ -31,75 +23,30 @@ namespace Figuritas.Models
         [Required(ErrorMessage = "Por favor ingrese un mail, mamerto")]
         [EmailAddress(ErrorMessage = "Por favor ingrese un mail valido, mamerto")]
         [Key]
-        public String Email
-        {
-            get
-            {
-                return email;
-            }
-            set
-            {
-                if (value == email)
-                    return;
-                email = value;
-            }
-        }
-
-        private String contrasena;
+        public String Email { get; set; }
+        
         /// <summary>
         /// Contrasena para el inicio de sesion del Usuario
         /// </summary>
         [DisplayName("Contrasena:")]
         [Required(ErrorMessage = "Por favor ingrese uma contrasena valida, mamerto")]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Por favor ingrese uma contrasena entre 8 y 15 caracteres, mamerto")]
-        public String Contrasena
-        {
-            get
-            {
-                return contrasena;
-            }
-            set
-            {
-                if (value == contrasena)
-                    return;
-                contrasena = value;
-            }
-        }
-
-        private ICollection<Usuario> amigos;
+        public String Contrasena { get; set; }
+        
         /// <summary>
         /// Lista de amigos del Usuario
         /// </summary>
-        public ICollection<Usuario> Amigos
-        {
-            get
-            {
-                return amigos;
-            }
-            set
-            {
-                if (value == amigos)
-                    return;
-                amigos = value;
-            }
-        }
-
-        private String idAlbum;
+        public ICollection<Usuario> Amigos { get; set; }
+        
         /// <summary>
         /// Identificador del Album del Usuario
         /// </summary>
-        public String IdAlbum
-        {
-            get
-            {
-                return idAlbum;
-            }
-        }
+        public String IdAlbum { get; set; }
         #endregion
 
         public Usuario(String nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
     }
 }

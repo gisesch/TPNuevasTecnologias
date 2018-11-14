@@ -19,7 +19,7 @@ namespace Figuritas.Controllers
 
         public ActionResult Principal()
         {
-            Album album = new Album("1");C:\Users\gise_\Documents\Facultad\Programacion Nueva Tecnologias\TP Figuritas\Figuritas\Models\Usuario.cs
+            Album album = new Album("1");
             album.Nombre = "Hola Figurita";
             List<Figurita> figuritas = new List<Figurita>();
             figuritas.Add(new Figurita("1"));

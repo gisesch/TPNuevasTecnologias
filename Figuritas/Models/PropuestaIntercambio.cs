@@ -10,79 +10,33 @@ namespace Figuritas.Models
     public class PropuestaIntercambio
     {
         #region Propiedades
-        private String id;
         /// <summary>
         /// Identificador de la PropuestaIntercambio
         /// </summary>
         [Key]
-        public String Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
-        private Usuario ofertante;
+        public String Id { get; set; }
+        
         /// <summary>
         /// Usuario que envia la PropuestaIntercambio
         /// </summary>
-        public Usuario Ofertante
-        {
-            get
-            {
-                return ofertante;
-            }
-            //set
-            //{
-            //    if (value == ofertante)
-            //        return;
-            //    ofertante = value;
-            //}
-        }
-
-        private Usuario receptorOferta;
+        public Usuario Ofertante { get; set; }
+        
         /// <summary>
         /// Usuario que recibe la PropuestaIntercambio
         /// </summary>
-        public Usuario ReceptorOferta
-        {
-            get
-            {
-                return receptorOferta;
-            }
-            //set
-            //{
-            //    if (value == receptorOferta)
-            //        return;
-            //    receptorOferta = value;
-            //}
-        }
-
-        private ICollection<Figurita> figuritas;
+        public Usuario ReceptorOferta { get; set; }
+        
         /// <summary>
         /// Lista de Figurita contenidos en la PropuestaIntercambio
         /// </summary>
-        public ICollection<Figurita> Figuritas
-        {
-            get
-            {
-                return figuritas;
-            }
-            //set
-            //{
-            //    if (value == figuritas)
-            //        return;
-            //    figuritas = value;
-            //}
-        }
+        public ICollection<Figurita> Figuritas { get; set; }
         #endregion
 
         public PropuestaIntercambio(String id, Usuario ofertante, Usuario receptorOferta)
         {
-            this.id = id;
-            this.ofertante = ofertante;
-            this.receptorOferta = receptorOferta;
+            this.Id = id;
+            this.Ofertante = ofertante;
+            this.ReceptorOferta = receptorOferta;
         }
     }
 }
