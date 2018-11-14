@@ -19,13 +19,14 @@ namespace Figuritas.Controllers
 
         public ActionResult Principal()
         {
-            Album album = new Album("1"); 
+            Album album = new Album("1");C:\Users\gise_\Documents\Facultad\Programacion Nueva Tecnologias\TP Figuritas\Figuritas\Models\Usuario.cs
             album.Nombre = "Hola Figurita";
-            List < Figurita > figuritas = new List<Figurita>();
+            List<Figurita> figuritas = new List<Figurita>();
             figuritas.Add(new Figurita("1"));
             album.Figuritas = figuritas;
-            generalDBContext.Albumes.Add(album); 
+          //  generalDBContext.Albumes.Add(album);
             return View(album);
+        
         }
 
         public ActionResult Amigos()

@@ -1,4 +1,6 @@
 ﻿@model Figuritas.Models.Album
+
+
 @{
     ViewBag.Title = "Principal";
 }
@@ -29,53 +31,68 @@
     }*@
 
 
-<div class="album">
-    <h2 align="center">Album @Model.Nombre</h2>
-    <input type="button" value="Actualizar" style="margin-left: 50px" />
-    <hr />
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+
+@using (Html.BeginForm("Principal", "Home"))
+{
+    @foreach (var item in Model.Figuritas)
+    {
+        <div class="album">
+            <h2 align="center">Album @Model.Nombre</h2>
+
+            <input class="btn btn-default" type="submit" value="Actualizar" />
+            <hr />
+
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
+                        @Html.TextBoxFor(x => item.Cantidad)
+                        @Html.LabelFor(x => item.Cantidad)
+                        @Html.ValidationMessageFor(x => item.Cantidad)
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="figurita-box">
-                <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="5" maxlength="2" aling="left" />
-            </div>
-        </div>
-    </div>
-</div>
+    }
+
+}
+
 
