@@ -24,9 +24,9 @@ namespace Figuritas.Models
         /// <summary>
         /// Coleccion de figuritas del Album
         /// </summary>
-        public ICollection<Figurita> Figuritas { get; set; }
+        public IEnumerable<Figurita> Figuritas { get; set; }
         #endregion
-
+        public Album() { }
         public Album(String id)
         {
             this.Id = id;

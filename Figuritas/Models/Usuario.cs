@@ -34,15 +34,17 @@ namespace Figuritas.Models
         public String Contrasena { get; set; }
         
         /// <summary>
-        /// Lista de amigos del Usuario
+        /// Amigo del Usuario
         /// </summary>
-        public ICollection<Usuario> Amigos { get; set; }
+        public Usuario Amigos { get; set; }
         
         /// <summary>
         /// Identificador del Album del Usuario
         /// </summary>
         public String IdAlbum { get; set; }
         #endregion
+
+        public Usuario() { }
 
         public Usuario(String nombre)
         {

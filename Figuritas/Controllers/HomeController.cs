@@ -17,20 +17,63 @@ namespace Figuritas.Controllers
             return View();
         }
 
-        public ActionResult Principal()
+       
+        public ActionResult Principal(Usuario usuarioLogueado)
         {
-            Album album = new Album("1");
-            album.Nombre = "Hola Figurita";
-            List<Figurita> figuritas = new List<Figurita>();
-            figuritas.Add(new Figurita("1"));
-            album.Figuritas = figuritas;
-            generalDBContext.Albumes.Add(album);
+
+            if (usuarioLogueado == null)
+            {
+                return HttpNotFound("Hubo un error con el usuario. Intente mas tarde");
+            }
+            else if (string.IsNullOrWhiteSpace(usuarioLogueado.Email))
+            {
+                return HttpNotFound("El usuario es invalido");
+            }
+
+            Usuario usuarioValido = generalDBContext.Usuarios.Find(usuarioLogueado.Email);
+
+            if (usuarioValido == null)
+            {
+                return HttpNotFound("El usuario no se encuentra registrado");
+            }
+
+            Album album = GetAlbumById(usuarioValido.IdAlbum);
+                            
+            if(album == null)
+            {
+                return HttpNotFound("El usuario no posee un album");
+            }
+
             return View(album);
-        
+       
         }
 
-        public ActionResult Amigos()
+        public ActionResult Actualizar(Album albumParaAct)
         {
+            //Album album = GetAlbumById("a002");
+
+            //if (album == null)
+            //{
+            //    return HttpNotFound("El usuario no posee un album");
+            //}
+
+            generalDBContext.Figuritas = (DbSet<Figurita>)albumParaAct.Figuritas;
+            generalDBContext.SaveChanges();
+            Album album = GetAlbumById(albumParaAct.Id);
+            if (album == null)
+            {
+                return HttpNotFound("El album no se encontro");
+            }
+            return View("Principal", album);
+
+
+
+        }
+
+        public ActionResult Amigos(Usuario usuarioLogueado)
+        {
+
+
             ViewBag.Message = "Amigo Generico";
             return View();
         }
@@ -45,5 +88,35 @@ namespace Figuritas.Controllers
         {
             return View();
         }
+
+
+
+
+        #region metodos privados
+
+        private Album GetAlbumById(String idAlbum)
+        {
+            Album albumResultado = generalDBContext.Albumes.Find(idAlbum);
+
+            if (albumResultado != null)
+            {
+                albumResultado.Figuritas = (from listaFiguritas in generalDBContext.Figuritas
+                                            where listaFiguritas.IdAlbum == idAlbum
+                                            select listaFiguritas).ToList();
+            }
+
+            return albumResultado;
+        }
+
+        #endregion
     }
+
+
 }
+
+
+
+
+
+
+

@@ -32,6 +32,8 @@ namespace Figuritas.Models
         public int Cantidad { get; set; }
         #endregion
 
+        public Figurita() { }
+
         public Figurita(String idAlbum)
         {
             this.IdAlbum = idAlbum;
