@@ -23,11 +23,27 @@ namespace Figuritas.Controllers
 
             if (usuarioLogueado == null)
             {
-                return HttpNotFound("Hubo un error con el usuario. Intente mas tarde");
+                if (!TempData.Keys.Contains("Usuario"))
+                {
+                    return HttpNotFound("Hubo un error con el usuario. Intente mas tarde");
+                }
+                else
+                {
+                    usuarioLogueado = (Usuario)TempData["Usuario"];
+                    TempData.Remove("Usuario");
+                }
             }
             else if (string.IsNullOrWhiteSpace(usuarioLogueado.Email))
             {
-                return HttpNotFound("El usuario es invalido");
+                if (!TempData.Keys.Contains("Usuario"))
+                {
+                    return HttpNotFound("El usuario es invalido");
+                }
+                else
+                {
+                    usuarioLogueado = (Usuario)TempData["Usuario"];
+                    TempData.Remove("Usuario");
+                }
             }
 
             Usuario usuarioValido = generalDBContext.Usuarios.Find(usuarioLogueado.Email);
@@ -36,6 +52,7 @@ namespace Figuritas.Controllers
             {
                 return HttpNotFound("El usuario no se encuentra registrado");
             }
+            TempData.Add("Usuario", usuarioValido);
 
             Album album = GetAlbumById(usuarioValido.IdAlbum);
                             
@@ -70,12 +87,41 @@ namespace Figuritas.Controllers
 
         }
 
-        public ActionResult Amigos(Usuario usuarioLogueado)
+        public ActionResult Amigos()
         {
+            Usuario usuarioLogueado = null;
 
+            if (TempData.Keys.Contains("Usuario"))
+            {
+                usuarioLogueado = (Usuario)TempData.Peek("Usuario");
+            }
+            
 
-            ViewBag.Message = "Amigo Generico";
-            return View();
+            if (usuarioLogueado == null)
+            {
+                return HttpNotFound("Hubo un error con el usuario. Intente mas tarde");
+            }
+            else if (string.IsNullOrWhiteSpace(usuarioLogueado.Email))
+            {
+                return HttpNotFound("El usuario es invalido");
+            }
+
+            Usuario amigoValido = generalDBContext.Usuarios.Find(usuarioLogueado.CodAmigo);
+
+            if (amigoValido == null)
+            {
+                return HttpNotFound("El usuario no se encuentra registrado");
+            }
+
+            Album album = GetAlbumById(amigoValido.IdAlbum);
+
+            if (album == null)
+            {
+                return HttpNotFound("El usuario no posee un album");
+            }
+
+            return View(album);
+
         }
 
       

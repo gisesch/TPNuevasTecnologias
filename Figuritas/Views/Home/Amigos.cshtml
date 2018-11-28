@@ -1,9 +1,43 @@
-﻿
+﻿@model Figuritas.Models.Album
+
 @{
     ViewBag.Title = "Amigos";
 }
 
-<div class="album">
+
+
+
+@using (Html.BeginForm("Actualizar", "Home", Model))
+{
+
+    <div class="album">
+        <h2 align="center">Album @Model.Nombre</h2>
+
+        <input class="btn btn-default" type="submit" value="Actualizar" />
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-3">
+                @foreach (var item in Model.Figuritas)
+                {
+                    <div class="figurita-box">
+
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
+                        @Html.TextBoxFor(x => item.Cantidad)
+                        @Html.LabelFor(x => item.Cantidad)
+                        @Html.ValidationMessageFor(x => item.Cantidad)
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@*<div class="album">
     <h2 align="center">@ViewBag.Message</h2>
     <hr />
     <div class="row">
@@ -29,11 +63,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3" >
+        <div class="col-sm-3">
             <div class="figurita-box">
                 <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="3" maxlength="2" aling="left" /><input class="btn btn-default" type="button" value="Intercambio" style="margin-left: 10px" />
             </div>
-         </div>
+        </div>
         <div class="col-sm-3">
             <div class="figurita-box">
                 <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" /><input name="textfield" type="int" id="textfield" value="0" size="3" maxlength="2" aling="left" /><input class="btn btn-default" type="button" value="Intercambio" style="margin-left: 10px" />
@@ -50,5 +84,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
