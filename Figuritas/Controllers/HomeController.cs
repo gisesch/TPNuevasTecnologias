@@ -14,6 +14,7 @@ namespace Figuritas.Controllers
 
         public ActionResult Index()
         {
+            TempData.Remove("Usuario");
             return View();
         }
 
