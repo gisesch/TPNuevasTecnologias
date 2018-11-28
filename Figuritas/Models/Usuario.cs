@@ -36,7 +36,7 @@ namespace Figuritas.Models
         /// <summary>
         /// Amigo del Usuario
         /// </summary>
-        public Usuario Amigos { get; set; }
+        public string CodAmigo { get; set; }
         
         /// <summary>
         /// Identificador del Album del Usuario
