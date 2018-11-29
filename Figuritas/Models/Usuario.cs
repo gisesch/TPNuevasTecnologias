@@ -20,8 +20,8 @@ namespace Figuritas.Models
         /// Cuenta de email del Usuario
         /// </summary>
         [DisplayName("Email:")]
-        [Required(ErrorMessage = "Por favor ingrese un mail, mamerto")]
-        [EmailAddress(ErrorMessage = "Por favor ingrese un mail valido, mamerto")]
+        [Required(ErrorMessage = "Por favor ingrese un mail")]
+        [EmailAddress(ErrorMessage = "Por favor ingrese un mail valido")]
         [Key]
         public String Email { get; set; }
         
@@ -29,8 +29,8 @@ namespace Figuritas.Models
         /// Contrasena para el inicio de sesion del Usuario
         /// </summary>
         [DisplayName("Contrasena:")]
-        [Required(ErrorMessage = "Por favor ingrese uma contrasena valida, mamerto")]
-        [StringLength(15, MinimumLength = 8, ErrorMessage = "Por favor ingrese uma contrasena entre 8 y 15 caracteres, mamerto")]
+        [Required(ErrorMessage = "Por favor ingrese uma contrasena valida")]
+        [StringLength(15, MinimumLength = 8, ErrorMessage = "Por favor ingrese uma contrasena entre 8 y 15 caracteres")]
         public String Contrasena { get; set; }
         
         /// <summary>
