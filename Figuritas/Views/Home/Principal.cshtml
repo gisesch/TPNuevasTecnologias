@@ -1,59 +1,41 @@
-﻿@model Figuritas.Models.Album
+﻿@model List<Figuritas.Models.Figurita>
 
 
 @{
-    ViewBag.Title = "Principal";
+//ViewBag.Title = "Principal";
+//List<Figuritas.Models.Figurita> figuritas = Model.Figuritas;
+//TempData.Add("Figuritas", figuritas);
 }
-
-@*@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-             <th>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </th>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID })  |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    }*@
-
 
 
 @using (Html.BeginForm("Actualizar", "Home", Model))
 {
 
         <div class="album">
+
             <h2 align="center">Album de Usuario</h2>
-            <h2 align="center">Album @Model.Nombre</h2>
+            <h2 align="center">@ViewBag.Title</h2>
 
             <input class="btn btn-default" type="submit" value="Actualizar" />
             <hr />
 
             <div class="row">
                 <div class="col-sm-3">
-                    @foreach (var item in Model.Figuritas)
+
+                    @*@Html.EditorFor(x => x.Figuritas);*@
+
+
+                    @for (var i = 0; i < Model.Count(); i++)
                     {
-                        <div class="figurita-box">
-
-                            <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
-                            @Html.TextBoxFor(x => item.Cantidad)
-                            @Html.LabelFor(x => item.Cantidad)
-                            @Html.ValidationMessageFor(x => item.Cantidad)
-
-                        </div>
+                    <div class="figurita-box">
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
+                        @Html.HiddenFor(x => x[i].IdAlbum)
+                        @Html.HiddenFor(x => x[i].Numero)
+                        @Html.LabelFor(x => x[i].Cantidad)
+                        @*<input class="form-control" type="text" value="@Model.Figuritas[i].Cantidad" name="cantidadFigurita" />*@
+                        @Html.EditorFor(x => x[i].Cantidad)
+                        @Html.ValidationMessageFor(x => x[i].Cantidad)
+                    </div>
                     }
                 </div>      
             </div>     

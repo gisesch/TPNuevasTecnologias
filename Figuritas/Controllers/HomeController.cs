@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +22,6 @@ namespace Figuritas.Controllers
        
         public ActionResult Principal(Usuario usuarioLogueado)
         {
-
             if (usuarioLogueado == null)
             {
                 if (!TempData.Keys.Contains("Usuario"))
@@ -46,7 +46,6 @@ namespace Figuritas.Controllers
                     TempData.Remove("Usuario");
                 }
             }
-
             Usuario usuarioValido = generalDBContext.Usuarios.Find(usuarioLogueado.Email);
 
             if (usuarioValido == null)
@@ -64,27 +63,24 @@ namespace Figuritas.Controllers
                 return HttpNotFound("El usuario no posee un album");
             }
 
-            return View(album);
+            ViewBag.Title = album.Nombre;
+            return View(album.Figuritas);
        
         }
 
-        public ActionResult Actualizar(Album albumParaAct)
+        public ActionResult Actualizar(List<Figurita> figuritas)
         {
-            //Album album = GetAlbumById("a002");
+            Album album = GetAlbumById(figuritas.First().IdAlbum);
 
-            //if (album == null)
-            //{
-            //    return HttpNotFound("El usuario no posee un album");
-            //}
-
-            generalDBContext.Figuritas = (DbSet<Figurita>)albumParaAct.Figuritas;
-            generalDBContext.SaveChanges();
-            Album album = GetAlbumById(albumParaAct.Id);
             if (album == null)
             {
                 return HttpNotFound("El album no se encontro");
             }
-            return View("Principal", album);
+
+            figuritas.ForEach(f => generalDBContext.Figuritas.AddOrUpdate(x => new { x.Numero, x.IdAlbum }, f));
+            generalDBContext.SaveChanges();
+
+            return View("Principal", figuritas);
 
 
 
