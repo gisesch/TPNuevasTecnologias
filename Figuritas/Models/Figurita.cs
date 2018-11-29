@@ -29,6 +29,7 @@ namespace Figuritas.Models
         /// <summary>
         /// Cantidad de veces repetidas de la Figurita
         /// </summary>
+        [Range(0,9,ErrorMessage = "Por favor ingrese un numero entre 0 y 9")]
         public int Cantidad { get; set; }
         #endregion
 

@@ -55,8 +55,10 @@ namespace Figuritas.Controllers
             TempData.Add("Usuario", usuarioValido);
 
             Album album = GetAlbumById(usuarioValido.IdAlbum);
-                            
-            if(album == null)
+            TempData.Remove("AlbumUsuario");
+            TempData.Add("AlbumUsuario", album);
+
+            if (album == null)
             {
                 return HttpNotFound("El usuario no posee un album");
             }
@@ -111,6 +113,8 @@ namespace Figuritas.Controllers
             }
 
             Album album = GetAlbumById(amigoValido.IdAlbum);
+            TempData.Remove("AlbumAmigo");
+            TempData.Add("AlbumAmigo", album);
 
             if (album == null)
             {
@@ -121,7 +125,32 @@ namespace Figuritas.Controllers
 
         }
 
-      
+        public ActionResult Intercambio()
+        {
+            Album album = null;
+
+            if (TempData.Keys.Contains("AlbumAmigo"))
+            {
+                album = (Album)TempData["AlbumAmigo"];
+                TempData.Remove("AlbumAmigo");
+                TempData.Add("AlbumAmigo", album);
+            }
+            if (album == null)
+            {
+                return HttpNotFound("El usuario no posee un album");
+            }
+            
+
+
+
+
+
+
+
+
+            return View("Amigos", album);
+        }
+
         public ActionResult Configuracion()
         {
             return View();
