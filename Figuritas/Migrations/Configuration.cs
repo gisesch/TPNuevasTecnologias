@@ -20,8 +20,9 @@ namespace Figuritas.Migrations
 
             var album = new List<Album>
             {
-                new Album { Id = "a001", Nombre = "Album1"},
-                new Album { Id = "a002", Nombre = "Album2"},
+                new Album { Id = "a001", Nombre = "Mundial 2018"},
+                new Album { Id = "a002", Nombre = "Mundial '78"},
+                new Album { Id = "a003", Nombre = "Copa Libertadores"},
             };
             album.ForEach(s => context.Albumes.AddOrUpdate(p => p.Id, s));
             context.SaveChanges();
@@ -30,7 +31,8 @@ namespace Figuritas.Migrations
             var usuario = new List<Usuario>
             {
                 new Usuario { Email = "usuario1@hotmail.com", Nombre = "Usuario1", Contrasena = "p12345678", CodAmigo = "usuario2@hotmail.com", IdAlbum = "a001"},
-                new Usuario { Email = "usuario2@hotmail.com", Nombre = "Usuario2", Contrasena = "p12345678", CodAmigo = "usuario1@hotmail.com", IdAlbum = "a002"},
+                new Usuario { Email = "usuario2@hotmail.com", Nombre = "Usuario2", Contrasena = "p12345678", CodAmigo = "usuario3@hotmail.com", IdAlbum = "a002"},
+                new Usuario { Email = "usuario3@hotmail.com", Nombre = "Usuario3", Contrasena = "p12345678", CodAmigo = "usuario1@hotmail.com", IdAlbum = "a003"}
             };
             usuario.ForEach(s => context.Usuarios.AddOrUpdate(p => p.Email, s));
             context.SaveChanges();
@@ -38,13 +40,23 @@ namespace Figuritas.Migrations
 
             var figurita = new List<Figurita>
             {
-                new Figurita { IdAlbum = "a001", Numero = 1, Cantidad = 4},
-                new Figurita { IdAlbum = "a001", Numero = 2, Cantidad = 4},
-                new Figurita { IdAlbum = "a001", Numero = 3, Cantidad = 4},
-                new Figurita { IdAlbum = "a001", Numero = 4, Cantidad = 4},
+                new Figurita { IdAlbum = "a001", Numero = 1, Cantidad = 0},
+                new Figurita { IdAlbum = "a001", Numero = 2, Cantidad = 0},
+                new Figurita { IdAlbum = "a001", Numero = 3, Cantidad = 0},
+                new Figurita { IdAlbum = "a001", Numero = 4, Cantidad = 0},
+                new Figurita { IdAlbum = "a001", Numero = 5, Cantidad = 0},
+                new Figurita { IdAlbum = "a001", Numero = 6, Cantidad = 0},
                 new Figurita { IdAlbum = "a002", Numero = 1, Cantidad = 0},
-                new Figurita { IdAlbum = "a002", Numero = 2, Cantidad = 1},
-                new Figurita { IdAlbum = "a002", Numero = 3, Cantidad = 2},
+                new Figurita { IdAlbum = "a002", Numero = 2, Cantidad = 0},
+                new Figurita { IdAlbum = "a002", Numero = 3, Cantidad = 0},
+                new Figurita { IdAlbum = "a002", Numero = 4, Cantidad = 0},
+                new Figurita { IdAlbum = "a002", Numero = 5, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 1, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 2, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 3, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 4, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 5, Cantidad = 0},
+                new Figurita { IdAlbum = "a003", Numero = 6, Cantidad = 0},
             };
             figurita.ForEach(s => context.Figuritas.AddOrUpdate(p => p.IdAlbum, s));
             context.SaveChanges();

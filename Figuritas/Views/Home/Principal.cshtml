@@ -20,24 +20,26 @@
             <hr />
 
             <div class="row">
-                <div class="col-sm-3">
-
-                    @*@Html.EditorFor(x => x.Figuritas);*@
 
 
-                    @for (var i = 0; i < Model.Count(); i++)
-                    {
-                    <div class="figurita-box">
-                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
-                        @Html.HiddenFor(x => x[i].IdAlbum)
-                        @Html.HiddenFor(x => x[i].Numero)
-                        @Html.LabelFor(x => x[i].Cantidad)
-                        @*<input class="form-control" type="text" value="@Model.Figuritas[i].Cantidad" name="cantidadFigurita" />*@
-                        @Html.EditorFor(x => x[i].Cantidad)
-                        @Html.ValidationMessageFor(x => x[i].Cantidad)
+                @*@Html.EditorFor(x => x.Figuritas);*@
+
+
+                @for (var i = 0; i < Model.Count(); i++)
+                {
+                    <div class="col-sm-3">
+                        <div class="figurita-box">
+                            <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
+                            @Html.HiddenFor(x => x[i].IdAlbum)
+                            @Html.HiddenFor(x => x[i].Numero)
+                           @* @Html.LabelFor(x => x[i].Cantidad)*@
+                            @*<input class="form-control" type="text" value="@Model.Figuritas[i].Cantidad" name="cantidadFigurita" />*@
+                            @Html.EditorFor(x => x[i].Cantidad)
+                            @Html.ValidationMessageFor(x => x[i].Cantidad)
+                        </div>
+
                     </div>
-                    }
-                </div>      
+                }
             </div>     
         </div>
     
