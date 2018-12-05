@@ -157,13 +157,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812050014083_pp.cs" />
+    <Compile Include="Migrations\201812050014083_pp.Designer.cs">
+      <DependentUpon>201812050014083_pp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Figurita.cs" />
+    <Compile Include="Models\GeneralDBContext.cs" />
     <Compile Include="Models\PropuestaIntercambio.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Figuritas.mdf" />
+    <Content Include="App_Data\Figuritas_log.ldf">
+      <DependentUpon>Figuritas.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -188,7 +198,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\validaciones.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -206,10 +215,8 @@
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\Amigos.cshtml" />
     <Content Include="Views\Home\Configuracion.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Content Include="Views\Home\AltaUsuario.cshtml" />
+    <Content Include="Views\Home\MisIntercambios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -223,6 +230,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812050014083_pp.resx">
+      <DependentUpon>201812050014083_pp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

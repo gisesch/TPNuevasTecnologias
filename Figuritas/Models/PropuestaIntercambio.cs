@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -9,96 +11,46 @@ namespace Figuritas.Models
     public class PropuestaIntercambio
     {
         #region Propiedades
-        private String id;
         /// <summary>
         /// Identificador de la PropuestaIntercambio
         /// </summary>
-        public String Id
-        {
-            get
-            {
-                return id;
-            }
-        }
+        [Key]
+        public int Id { get; set; }
 
-        private Usuario ofertante;
         /// <summary>
         /// Usuario que envia la PropuestaIntercambio
         /// </summary>
-        public Usuario Ofertante
-        {
-            get
-            {
-                return ofertante;
-            }
-            //set
-            //{
-            //    if (value == ofertante)
-            //        return;
-            //    ofertante = value;
-            //}
-        }
-
-        private Usuario receptorOferta;
+        [DisplayName("Ofertante:")]
+        public String Ofertante { get; set; }
+        
         /// <summary>
         /// Usuario que recibe la PropuestaIntercambio
         /// </summary>
-        public Usuario ReceptorOferta
-        {
-            get
-            {
-                return receptorOferta;
-            }
-            //set
-            //{
-            //    if (value == receptorOferta)
-            //        return;
-            //    receptorOferta = value;
-            //}
-        }
+        public String ReceptorOferta { get; set; }
 
-        private ICollection<Figurita> figuritas;
         /// <summary>
-        /// Lista de Figurita contenidos en la PropuestaIntercambio
+        /// Identificador del album
         /// </summary>
-        public ICollection<Figurita> Figuritas
-        {
-            get
-            {
-                return figuritas;
-            }
-            //set
-            //{
-            //    if (value == figuritas)
-            //        return;
-            //    figuritas = value;
-            //}
-        }
+        [DisplayName("Album:")]
+        public String IdAlbum { get; set; }
+
+        /// <summary>
+        /// Identificador de la Figurita dentro de un Album
+        /// </summary>
+        [DisplayName("Figurita numero:")]
+        public int NumeroFigurita { get; set; }
+
         #endregion
 
-        public PropuestaIntercambio(String id, Usuario ofertante, Usuario receptorOferta)
-        {
-            this.id = id;
-            this.ofertante = ofertante;
-            this.receptorOferta = receptorOferta;
-        }
-    }
+        public PropuestaIntercambio() { }
 
-    public class PropuestaIntercambioDBContext : DbContext
-    {
-        private DbSet<PropuestaIntercambio> propuestaIntercambios;
-        public DbSet<PropuestaIntercambio> PropuestaIntercambios
+        public PropuestaIntercambio(int id, String ofertante, String receptorOferta,String idAlbum, int numeroFigurita)
         {
-            get
-            {
-                return propuestaIntercambios;
-            }
-            set
-            {
-                if (value == propuestaIntercambios)
-                    return;
-                propuestaIntercambios = value;
-            }
+            this.Id = id;
+            this.Ofertante = ofertante;
+            this.ReceptorOferta = receptorOferta;
+            this.IdAlbum = idAlbum;
+            this.NumeroFigurita = numeroFigurita;
         }
     }
 }

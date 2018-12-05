@@ -1,17 +1,39 @@
-﻿@{
+﻿@model Figuritas.Models.Usuario
+
+@{
     ViewBag.Title = "Initial";
 }
 
-<h1> Gelouuu buelcome chu dis peishhh</h1>
+@using (Html.BeginForm("Principal", "Home", Model))
+{
+    <div class="logueo">
+        <div>
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Contrasena)
+            @Html.TextBoxFor(x => x.Contrasena)
+            @Html.ValidationMessageFor(x => x.Contrasena)
+        </div>
+        <div>
+            <input class="btn btn-default" type="submit" value="Loguear" />
+            <input class="btn btn-default" type="button" value="Alta Usuario" onclick="location.href='@Url.Action("AltaUsuario", "Home")'" />
+        </div>
 
-<p>
-    Mail
-    <input type="text" name="textfield" id="textfield" />
-</p>
-<p>Password <input type="text" name="textfield" id="textfield" /></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p> <input type="submit" name="button" id="button" value="Loguear" />       <input type="submit" name="button" id="button" value="Alta usuario" /></p>
+       @*<p class="btn btn-default">@Html.ActionLink("Loguear", "Principal", "Home")</p>*@
+       @* <p class="btn btn-default">@Html.ActionLink("Alta Usuario", "Principal", "Home")</p>*@
+
+    </div>
+}
+
+@section Scripts{
+    
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
 
 
 
