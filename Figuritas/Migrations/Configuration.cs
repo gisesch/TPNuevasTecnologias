@@ -58,7 +58,16 @@ namespace Figuritas.Migrations
                 new Figurita { IdAlbum = "a003", Numero = 5, Cantidad = 0},
                 new Figurita { IdAlbum = "a003", Numero = 6, Cantidad = 0},
             };
-            figurita.ForEach(s => context.Figuritas.AddOrUpdate(p => p.IdAlbum, s));
+            figurita.ForEach(s => context.Figuritas.AddOrUpdate(p => new { p.Numero, p.IdAlbum }, s));
+            context.SaveChanges();
+
+
+            var propuestaIntercambio = new List<PropuestaIntercambio>
+            {
+                new PropuestaIntercambio { Id = 1 , Ofertante = "usuario2@hotmail.com" , ReceptorOferta = "usuario1@hotmail.com" , IdAlbum = "a001", NumeroFigurita = 1 },
+                
+            };
+            propuestaIntercambio.ForEach(s => context.PropuestaIntercambios.AddOrUpdate(p => p.Id, s));
             context.SaveChanges();
 
             //  This method will be called after migrating to the latest version.

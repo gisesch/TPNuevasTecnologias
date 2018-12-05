@@ -157,9 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811280125140_primerMigracion.cs" />
-    <Compile Include="Migrations\201811280125140_primerMigracion.Designer.cs">
-      <DependentUpon>201811280125140_primerMigracion.cs</DependentUpon>
+    <Compile Include="Migrations\201812050014083_pp.cs" />
+    <Compile Include="Migrations\201812050014083_pp.Designer.cs">
+      <DependentUpon>201812050014083_pp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -216,6 +216,7 @@
     <Content Include="Views\Home\Amigos.cshtml" />
     <Content Include="Views\Home\Configuracion.cshtml" />
     <Content Include="Views\Home\AltaUsuario.cshtml" />
+    <Content Include="Views\Home\MisIntercambios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -232,8 +233,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811280125140_primerMigracion.resx">
-      <DependentUpon>201811280125140_primerMigracion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812050014083_pp.resx">
+      <DependentUpon>201812050014083_pp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

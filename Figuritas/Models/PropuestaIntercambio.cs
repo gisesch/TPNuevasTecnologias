@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
@@ -14,29 +15,42 @@ namespace Figuritas.Models
         /// Identificador de la PropuestaIntercambio
         /// </summary>
         [Key]
-        public String Id { get; set; }
-        
+        public int Id { get; set; }
+
         /// <summary>
         /// Usuario que envia la PropuestaIntercambio
         /// </summary>
-        public Usuario Ofertante { get; set; }
+        [DisplayName("Ofertante:")]
+        public String Ofertante { get; set; }
         
         /// <summary>
         /// Usuario que recibe la PropuestaIntercambio
         /// </summary>
-        public Usuario ReceptorOferta { get; set; }
-        
+        public String ReceptorOferta { get; set; }
+
         /// <summary>
-        /// Lista de Figurita contenidos en la PropuestaIntercambio
+        /// Identificador del album
         /// </summary>
-        public ICollection<Figurita> Figuritas { get; set; }
+        [DisplayName("Album:")]
+        public String IdAlbum { get; set; }
+
+        /// <summary>
+        /// Identificador de la Figurita dentro de un Album
+        /// </summary>
+        [DisplayName("Figurita numero:")]
+        public int NumeroFigurita { get; set; }
+
         #endregion
 
-        public PropuestaIntercambio(String id, Usuario ofertante, Usuario receptorOferta)
+        public PropuestaIntercambio() { }
+
+        public PropuestaIntercambio(int id, String ofertante, String receptorOferta,String idAlbum, int numeroFigurita)
         {
             this.Id = id;
             this.Ofertante = ofertante;
             this.ReceptorOferta = receptorOferta;
+            this.IdAlbum = idAlbum;
+            this.NumeroFigurita = numeroFigurita;
         }
     }
 }

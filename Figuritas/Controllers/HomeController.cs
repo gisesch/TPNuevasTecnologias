@@ -76,14 +76,16 @@ namespace Figuritas.Controllers
             {
                 return HttpNotFound("El album no se encontro");
             }
+            if (ModelState.IsValid)
+            {
+                figuritas.ForEach(f => generalDBContext.Figuritas.AddOrUpdate(x => new { x.Numero, x.IdAlbum }, f));
 
-            figuritas.ForEach(f => generalDBContext.Figuritas.AddOrUpdate(x => new { x.Numero, x.IdAlbum }, f));
-            generalDBContext.SaveChanges();
+                generalDBContext.SaveChanges();
 
-            return View("Principal", figuritas);
+                return View("Principal", figuritas);
+            }
 
-
-
+            return HttpNotFound("Cantidad incorrecta de figuritas");
         }
 
         public ActionResult Amigos()
@@ -125,28 +127,72 @@ namespace Figuritas.Controllers
 
         }
 
-        public ActionResult Intercambio()
+        public ActionResult MisIntercambios()
+        {
+            Usuario usuarioLogueado = null;
+
+            if (TempData.Keys.Contains("Usuario"))
+            {
+                usuarioLogueado = (Usuario)TempData.Peek("Usuario");
+            }
+
+            if (usuarioLogueado == null)
+            {
+                return HttpNotFound("Hubo un error con el usuario. Intente mas tarde");
+            }
+            else if (string.IsNullOrWhiteSpace(usuarioLogueado.Email))
+            {
+                return HttpNotFound("El usuario es invalido");
+            }
+
+            List<PropuestaIntercambio> listaIntercambios = (from intercambio in generalDBContext.PropuestaIntercambios
+                                                           where intercambio.ReceptorOferta == usuarioLogueado.Email
+                                                           select intercambio).ToList();
+
+            return View(listaIntercambios);
+        }
+
+        public ActionResult Intercambio(Figurita figurita)
         {
             Album album = null;
+            Usuario usuario = null;
 
             if (TempData.Keys.Contains("AlbumAmigo"))
             {
-                album = (Album)TempData["AlbumAmigo"];
-                TempData.Remove("AlbumAmigo");
-                TempData.Add("AlbumAmigo", album);
+                album = (Album)TempData.Peek("AlbumAmigo");
+
             }
             if (album == null)
             {
                 return HttpNotFound("El usuario no posee un album");
             }
-            
 
+            if (figurita == null || string.IsNullOrWhiteSpace(figurita.IdAlbum))
+            {
+                return HttpNotFound("La figurita no existe");
+            }
 
+            if (TempData.Keys.Contains("Usuario"))
+            {
+                usuario = (Usuario)TempData.Peek("Usuario");
 
+            }
+            if (album == null)
+            {
+                return HttpNotFound("Usuario no encontrado");
+            }
 
+            PropuestaIntercambio propuesta = new PropuestaIntercambio() {
+                IdAlbum = figurita.IdAlbum,
+                Ofertante = usuario.Email,
+                ReceptorOferta = usuario.CodAmigo,
+                NumeroFigurita = figurita.Numero,
+                Id = generalDBContext.PropuestaIntercambios.Max(x => x.Id) + 1
+            };
 
-
-
+            generalDBContext.PropuestaIntercambios.Add(propuesta);
+            generalDBContext.SaveChanges();
+            //Completar con logica
 
             return View("Amigos", album);
         }

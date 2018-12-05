@@ -7,8 +7,8 @@
 
 
 
-@using (Html.BeginForm("Intercambio", "Home", Model))
-{
+@*@using (Html.BeginForm("Intercambio", "Home", Model))
+{*@
 
 <div class="album">
     <h2 align="center">Album de Amigo</h2>
@@ -21,25 +21,39 @@
 
         @foreach (var item in Model.Figuritas)
         {
-            <div class="col-sm-3">
-                <div class="figurita-box">
+            using (Html.BeginForm("Intercambio", "Home", item))
+            {
+                <div class="col-sm-3">
+                    <div class="figurita-box">
 
-                    <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
-                    @*@Html.LabelFor(x => item.Cantidad, "Cantidad de figuritas para intercambio: ")
-                    @Html.TextBoxFor(x => item.Cantidad)*@
-                    @Html.LabelFor(x => item.Cantidad, "Cantidad de figuritas disponibles para intercambio: ")
-                    @Html.ValueFor(x => item.Cantidad)
-                    @Html.ValidationMessageFor(x => item.Cantidad)
+                        <img class="figurita" src="http://piyaexotica.com/images/projects/Dummy.jpg" alt="Imagen figurita" />
+                        @*@Html.LabelFor(x => item.Cantidad, "Cantidad de figuritas para intercambio: ")
+                        @Html.TextBoxFor(x => item.Cantidad)*@
+
+
+                        @if (item.Cantidad == 0)
+                        {
+                            <input class="btn btn-default" type="submit" value="Intercambio" disabled />
+                        }
+                        else
+                        {
+                            <input class="btn btn-default" type="submit" value="Intercambio" />
+                        }
+
+                        @Html.LabelFor(x => item.Cantidad, "Cantidad de figuritas disponibles para intercambio: ")
+                        @Html.ValueFor(x => item.Cantidad)
+                        @Html.ValidationMessageFor(x => item.Cantidad)
+
+                    </div>
 
                 </div>
-
-            </div>
-        }
+                }
+            }
     </div>
 </div>
 
 
-}
+@*}*@
 
 
 @*<div class="album">
